@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-image:  url('pexels-photo-1198839.webp');
+    background-image:  url('fileimages/pexels-photo-1198839.webp');
     display: flex;
     justify-content: center;
     background-size: cover;
@@ -58,7 +58,7 @@ input, button{
 }
 
 .weather {
-    background-image: url('pexels-photo-1430677.jpeg');
+    background-image: url('fileimages/pexels-photo-1430677.jpeg');
     background-size: cover; /* Adjusts the background image to cover the entire container */
     background-position: center; /* Centers the background image */
     background-repeat: no-repeat; /* Prevents the background image from repeating */
