@@ -33,6 +33,7 @@ function fetchWeather(location) {
             temperatureElement.textContent = `${Math.round(data.main.temp)}°F`;
             descriptionElement.textContent = data.weather[0].description;
             humidityElement.textContent = `Humidity: ${data.main.humidity}%`;
+            windElement.textContent = `Wind Speed: ${data.wind.speed} mph`; // Add this line to display wind speed
 
             // Estimating precipitation percentage based on humidity
             let precipitationPercentage = 0;

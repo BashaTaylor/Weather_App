@@ -69,7 +69,8 @@ input, button{
     border-radius: 15px;
     box-shadow: 0 5px 10px 0 #00000070;
     padding: 50px;
-    margin: 15px;
+    /* margin: 15px; */
+    margin: 0 auto; /* Center the container horizontally */
 }
 
 .weather-info, .forecast-item, .city, .temperature-container, .weather {
@@ -80,6 +81,9 @@ input, button{
     margin: 15px;
 }
 
+.weather-info {
+    padding-left: 10px;
+}
 
 .weather-info p {
     color: rgb(70, 72, 83);
@@ -124,7 +128,9 @@ input, button{
     color: blue;
     display: flex;
     justify-content: space-around; /* Or space-around, depending on your preference */
-    flex-wrap: wrap; /* Allow items to wrap to the next row */
+    flex-wrap: nowrap; /* Prevent items from wrapping to the next row */
+    /* flex-wrap: wrap; Allow items to wrap to the next row */
+    overflow-x: auto; /* Add horizontal scroll if items exceed container width */
 }
 
 .forecast-item {
@@ -132,8 +138,14 @@ input, button{
     color: white;
     text-align: center; /* Centers text horizontally */
     font-size: 18px;
-    
+    flex: 0 0 auto; /* Allow items to grow or shrink based on content */
+    width: calc(12% - 20px); /* Set width for each item with some margin */
 }
+
+/* Remove right margin from last item to prevent overflow */
+/* .forecast-item:last-child {
+    margin-right: 0;
+} */
 
 #precipitation {
     color: rgb(70, 72, 83);
