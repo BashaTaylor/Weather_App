@@ -1,0 +1,159 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image:  url('pexels-photo-1198839.webp');
+    display: flex;
+    justify-content: center;
+    background-size: cover;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: rgb(237, 244, 250);
+}
+
+* ::after, ::before {
+    box-sizing: border-box;
+}
+
+/* Add more styles as needed */
+
+input, button{
+    background-color: azure;
+}
+
+#locationInput {
+    border-radius: 15px;
+    box-shadow: 0 5px 10px 0 #00000070;
+    padding: 10px;
+    margin: 15px;
+    background-color: rgba(0, 0, 255, 0.843);
+    color: white;
+}
+
+#locationInput::placeholder {
+    color: white;
+}
+
+#searchButton {
+    border-radius: 15px;
+    box-shadow: 0 5px 10px 0 #00000070;
+    padding: 10px;
+    margin: 15px;
+    background-color: rgba(0, 0, 255, 0.843);
+    color: white;
+}
+
+.city {
+    background-color: rgba(93, 223, 230, 0.554);
+    color: blue;
+    display: block;
+}
+
+.container {
+    width: 1000px;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto; /* Add this line to center the app */
+
+}
+
+.weather {
+    background-image: url('pexels-photo-1430677.jpeg');
+    background-size: cover; /* Adjusts the background image to cover the entire container */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    border-radius: 15px;
+    box-shadow: 0 5px 10px 0 #00000070;
+    padding: 50px;
+    margin: 15px;
+}
+
+.weather-info, .forecast-item, .city, .temperature-container, .weather {
+    border: 1px solid #cccccc;
+    box-shadow: 0 5px 10px 0 #00000070;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 15px;
+}
+
+
+.weather-info p {
+    color: rgb(70, 72, 83);
+    font-size: 16px;
+    font-weight: 100;
+    line-height: 19px;
+    list-style: none;
+}
+
+/* Parent */
+.main-temperature {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: stretch; /* Ensures both child divs have the same height */
+    gap: 10px;
+    
+}
+
+
+/* Child */
+.weather-info {
+    flex: 1;
+    display: block;
+    background-color: rgba(240, 255, 255, 0.733);
+}
+
+/* Child */
+.temperature-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background-color: rgba(240, 255, 255, 0.733);
+    justify-content: space-evenly;
+}
+
+.forecast-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-gap: 10px;
+    background-color: rgba(0, 255, 255, 0);
+}
+
+.forecast-item {
+    background: rgba(36, 36, 237, 0.791);
+    color: white;
+    text-align: center; /* Centers text horizontally */
+    font-size: 18px;
+}
+
+#precipitation {
+    color: rgb(70, 72, 83);
+    font-size: 16px;
+    font-weight: 100;
+    line-height: 19px;
+    list-style: none;
+}
+#temperature {
+    font-size: 4em;
+    margin-right: 20px;
+}
+#weatherIcon::before {
+    display: none;
+}
+
+#weatherIcon::after {
+    width: 160px;
+    height: 140px;
+}
+
+.current-info {
+    flex: 2;
+    margin-left: 20px;
+}
+
+#description::first-letter {
+    text-transform: uppercase;
+}
+
+footer {
+    padding-left: 20px;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="weather">
+            <div class="city">
+                <h1>Weather App</h1>
+                <input type="text" id="locationInput" placeholder="Enter a city">
+                <button id="searchButton">Search</button>
+            </div>
+            <div class="main-temperature">
+
+                <div class="weather-info">
+                    <h2 id="location"></h2>
+                    <p id="time"></p>
+                    <p id="description"></p>
+                    <p id="humidity"></p>
+                    <p id="wind"></p>
+                    <p id="precipitation"></p> <!-- Added precipitation element -->
+                </div>
+                <div class="temperature-container">
+                    <img id="weatherIcon" src="https://openweathermap.org/img/wn/${weatherIcon}.png" alt="">
+                    <p id="temperature"></p>
+                </div>
+            </div>
+            <p id="forecast" class="forecast-container">Five day forecast</p>
+        </div>
+        <footer class="footer">
+            <p id="copy_right">&copy; 2024 Created by Barbara Taylor</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
