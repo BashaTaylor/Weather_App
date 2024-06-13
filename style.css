@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-image:  url('fileimages/pexels-photo-1198839.webp');
+    background-image:  url('html_fileimages/pexels-photo-1198839.webp');
     display: flex;
     justify-content: center;
     background-size: cover;
@@ -46,8 +46,12 @@ input, button{
     background-color: rgba(93, 223, 230, 0.554);
     color: blue;
     display: block;
+    
 }
 
+.city h1 {
+    padding-left: 10px;
+}
 .container {
     width: 1000px;
     padding: 50px;
@@ -58,7 +62,7 @@ input, button{
 }
 
 .weather {
-    background-image: url('fileimages/pexels-photo-1430677.jpeg');
+    background-image: url('html_fileimages/pexels-photo-358358.jpeg');
     background-size: cover; /* Adjusts the background image to cover the entire container */
     background-position: center; /* Centers the background image */
     background-repeat: no-repeat; /* Prevents the background image from repeating */
@@ -113,9 +117,14 @@ input, button{
 
 .forecast-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
     grid-gap: 10px;
     background-color: rgba(0, 255, 255, 0);
+    margin-left: 3px;
+    color: blue;
+    display: flex;
+    justify-content: space-around; /* Or space-around, depending on your preference */
+    flex-wrap: wrap; /* Allow items to wrap to the next row */
 }
 
 .forecast-item {
@@ -123,6 +132,7 @@ input, button{
     color: white;
     text-align: center; /* Centers text horizontally */
     font-size: 18px;
+    
 }
 
 #precipitation {

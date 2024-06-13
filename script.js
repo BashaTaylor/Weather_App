@@ -18,8 +18,9 @@ const precipitationElement = document.getElementById('precipitation'); // Added 
 searchButton.addEventListener('click', () => {
     const location = locationInput.value;
     if (location) {
-        fetchWeather(location);
-        fetchForecast(location);
+        const [city, state] = location.split(',').map(part => part.trim()); // Split input into city and state
+        fetchWeather(city, state); // Pass city and state to fetchWeather function
+        fetchForecast(city, state); // Pass city and state to fetchForecast function
     }
 });
 
@@ -59,31 +60,91 @@ function fetchWeather(location) {
 
 
 
+// function fetchForecast(location) {
+//     const url = `${forecastApiUrl}?q=${location}&appid=${apiKey}&units=imperial`;
+//     fetch(url)
+//         .then(response => response.json())
+//         .then(data => {
+//             const forecastData = data.list.filter(item => item.dt_txt.includes('12:00:00'));
+//             forecastElement.innerHTML = '';
+//             forecastData.forEach(item => {
+//                 const date = new Date(item.dt * 1000);
+//                 const day = date.toLocaleDateString('en-US', { weekday: 'short' });
+//                 const high = Math.round(item.main.temp_max);
+//                 const low = Math.round(item.main.temp_min);
+//                 const weatherIcon = item.weather[0].icon; 
+//                 const forecastItem = document.createElement('div');
+//                 forecastItem.classList.add('forecast-item');
+//                 forecastItem.innerHTML = `
+//                     <p>${day}</p>
+//                     <img src="https://openweathermap.org/img/wn/${weatherIcon}.png" alt="Weather Icon"> <!-- Added weather icon -->
+//                     <p>High: ${high}°F</p>
+//                     <p>Low: ${low}°F</p>
+//                 `;
+//                 forecastElement.appendChild(forecastItem);
+//             });
+//         })
+//         .catch(error => {
+//             console.error('Error fetching forecast data:', error);
+//         });
+// }
+
 function fetchForecast(location) {
     const url = `${forecastApiUrl}?q=${location}&appid=${apiKey}&units=imperial`;
     fetch(url)
         .then(response => response.json())
         .then(data => {
-            const forecastData = data.list.filter(item => item.dt_txt.includes('12:00:00'));
+            const forecastData = data.list;
             forecastElement.innerHTML = '';
+            let currentDate = null;
+            let currentDayData = null;
             forecastData.forEach(item => {
                 const date = new Date(item.dt * 1000);
                 const day = date.toLocaleDateString('en-US', { weekday: 'short' });
-                const high = Math.round(item.main.temp_max);
-                const low = Math.round(item.main.temp_min);
-                const weatherIcon = item.weather[0].icon; // Get the weather icon code
-                const forecastItem = document.createElement('div');
-                forecastItem.classList.add('forecast-item');
-                forecastItem.innerHTML = `
-                    <p>${day}</p>
-                    <img src="https://openweathermap.org/img/wn/${weatherIcon}.png" alt="Weather Icon"> <!-- Added weather icon -->
-                    <p>High: ${high}°F</p>
-                    <p>Low: ${low}°F</p>
-                `;
-                forecastElement.appendChild(forecastItem);
+                
+                // Check if the day has changed
+                if (day !== currentDate) {
+                    // If it's not the first iteration, add the previous day's data to the forecast
+                    if (currentDayData) {
+                        addForecastItem(currentDayData);
+                    }
+                    // Reset currentDayData for the new day
+                    currentDayData = {
+                        day: day,
+                        high: -Infinity,
+                        low: Infinity,
+                        icon: null
+                    };
+                    currentDate = day;
+                }
+                
+                // Update high and low temperatures for the current day
+                if (item.main.temp_max > currentDayData.high) {
+                    currentDayData.high = item.main.temp_max;
+                    currentDayData.icon = item.weather[0].icon;
+                }
+                if (item.main.temp_min < currentDayData.low) {
+                    currentDayData.low = item.main.temp_min;
+                }
             });
+            // Add the last day's data to the forecast
+            if (currentDayData) {
+                addForecastItem(currentDayData);
+            }
         })
         .catch(error => {
             console.error('Error fetching forecast data:', error);
         });
+}
+
+function addForecastItem(data) {
+    const forecastItem = document.createElement('div');
+    forecastItem.classList.add('forecast-item');
+    forecastItem.innerHTML = `
+        <p>${data.day}</p>
+        <img src="https://openweathermap.org/img/wn/${data.icon}.png" alt="Weather Icon">
+        <p>High: ${Math.round(data.high)}°F</p>
+        <p>Low: ${Math.round(data.low)}°F</p>
+    `;
+    forecastElement.appendChild(forecastItem);
 }
