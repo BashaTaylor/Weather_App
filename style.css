@@ -9,17 +9,13 @@ body {
     margin: 0;
     background-color: rgb(237, 244, 250);
 }
-
 * ::after, ::before {
     box-sizing: border-box;
 }
-
 /* Add more styles as needed */
-
 input, button{
     background-color: azure;
 }
-
 #locationInput {
     border-radius: 15px;
     box-shadow: 0 5px 10px 0 #00000070;
@@ -28,11 +24,9 @@ input, button{
     background-color: rgba(0, 0, 255, 0.843);
     color: white;
 }
-
 #locationInput::placeholder {
     color: white;
 }
-
 #searchButton {
     border-radius: 15px;
     box-shadow: 0 5px 10px 0 #00000070;
@@ -41,14 +35,12 @@ input, button{
     background-color: rgba(0, 0, 255, 0.843);
     color: white;
 }
-
 .city {
     background-color: rgba(93, 223, 230, 0.554);
     color: blue;
     display: block;
     
 }
-
 .city h1 {
     padding-left: 10px;
 }
@@ -58,9 +50,7 @@ input, button{
     display: flex;
     flex-direction: column;
     margin: 0 auto; /* Add this line to center the app */
-
 }
-
 .weather {
     background-image: url('html_fileimages/pexels-photo-358358.jpeg');
     background-size: cover; /* Adjusts the background image to cover the entire container */
@@ -69,6 +59,7 @@ input, button{
     border-radius: 15px;
     box-shadow: 0 5px 10px 0 #00000070;
     padding: 50px;
+    margin: 15px;
     /* margin: 15px; */
     margin: 0 auto; /* Center the container horizontally */
 }
@@ -92,7 +83,6 @@ input, button{
     line-height: 19px;
     list-style: none;
 }
-
 /* Parent */
 .main-temperature {
     display: flex;
@@ -101,15 +91,12 @@ input, button{
     gap: 10px;
     
 }
-
-
 /* Child */
 .weather-info {
     flex: 1;
     display: block;
     background-color: rgba(240, 255, 255, 0.733);
 }
-
 /* Child */
 .temperature-container {
     flex: 1;
@@ -118,7 +105,6 @@ input, button{
     background-color: rgba(240, 255, 255, 0.733);
     justify-content: space-evenly;
 }
-
 .forecast-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
@@ -128,6 +114,7 @@ input, button{
     color: blue;
     display: flex;
     justify-content: space-around; /* Or space-around, depending on your preference */
+    flex-wrap: wrap; /* Allow items to wrap to the next row */
     flex-wrap: nowrap; /* Prevent items from wrapping to the next row */
     /* flex-wrap: wrap; Allow items to wrap to the next row */
     overflow-x: auto; /* Add horizontal scroll if items exceed container width */
@@ -138,6 +125,7 @@ input, button{
     color: white;
     text-align: center; /* Centers text horizontally */
     font-size: 18px;
+
     flex: 0 0 auto; /* Allow items to grow or shrink based on content */
     width: calc(12% - 20px); /* Set width for each item with some margin */
 }
@@ -161,21 +149,17 @@ input, button{
 #weatherIcon::before {
     display: none;
 }
-
 #weatherIcon::after {
     width: 160px;
     height: 140px;
 }
-
 .current-info {
     flex: 2;
     margin-left: 20px;
 }
-
 #description::first-letter {
     text-transform: uppercase;
 }
-
 footer {
     padding-left: 20px;
 }

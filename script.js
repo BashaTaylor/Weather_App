@@ -13,8 +13,6 @@ forecastElement.classList.add('forecast-container');
 const weatherIconElement = document.getElementById('weatherIcon'); // Added this line
 const windElement = document.getElementById('wind');
 const precipitationElement = document.getElementById('precipitation'); // Added this line
-
-
 searchButton.addEventListener('click', () => {
     const location = locationInput.value;
     if (location) {
@@ -23,7 +21,6 @@ searchButton.addEventListener('click', () => {
         fetchForecast(city, state); // Pass city and state to fetchForecast function
     }
 });
-
 function fetchWeather(location) {
     const url = `${apiUrl}?q=${location}&appid=${apiKey}&units=imperial`;
     fetch(url)
@@ -42,13 +39,10 @@ function fetchWeather(location) {
             } else if (data.main.humidity > 50) {
                 precipitationPercentage = 30; // Example: If humidity is between 50% and 70%, assume 30% chance of precipitation
             } // You can add more conditions to fine-tune the estimation
-
             precipitationElement.textContent = `Precipitation: ${precipitationPercentage}%`;
-
             const weatherIcon = data.weather[0].icon;
             const iconUrl = `https://openweathermap.org/img/wn/${weatherIcon}.png`;
             weatherIconElement.src = iconUrl;
-
             const currentTime = new Date(data.dt * 1000);
             const options = { weekday: 'long', hour: 'numeric', minute: 'numeric' };
             const formattedTime = new Intl.DateTimeFormat('en-US', options).format(currentTime);
@@ -58,9 +52,6 @@ function fetchWeather(location) {
             console.error('Error fetching weather data:', error);
         });
 }
-
-
-
 // function fetchForecast(location) {
 //     const url = `${forecastApiUrl}?q=${location}&appid=${apiKey}&units=imperial`;
 //     fetch(url)
@@ -89,7 +80,6 @@ function fetchWeather(location) {
 //             console.error('Error fetching forecast data:', error);
 //         });
 // }
-
 function fetchForecast(location) {
     const url = `${forecastApiUrl}?q=${location}&appid=${apiKey}&units=imperial`;
     fetch(url)
@@ -137,7 +127,6 @@ function fetchForecast(location) {
             console.error('Error fetching forecast data:', error);
         });
 }
-
 function addForecastItem(data) {
     const forecastItem = document.createElement('div');
     forecastItem.classList.add('forecast-item');
