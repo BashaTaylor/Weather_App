@@ -125,11 +125,10 @@ button {
 .temperature-container {
     flex: 1; /* Allow it to grow to fill the available space */
     display: flex;
-    
     flex-direction: column;
     align-items: center; /* Center items horizontally */
     /* Adjust padding for spacing inside the container */
-    border-radius: 10px; /* Optional: Add border radius for rounded corners */
+    border-radius: 15px; /* Optional: Add border radius for rounded corners */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add box shadow for depth */
     background-color: rgba(255, 255, 255, 0.8); /* Optional: Adjust background color */
     text-align: center; /* Center text content */
@@ -142,6 +141,8 @@ button {
     background-color: rgba(255, 255, 255, 0.8); /* Optional: Adjust background color */
     text-align:start;
     padding-top: 60px;
+    border-radius: 15px;
+    
 }
 
 .temp1 {
